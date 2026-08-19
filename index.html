@@ -240,13 +240,15 @@ button{ font-family:inherit; cursor:pointer; }
 .skill-bar{ height:6px; border-radius:var(--radius-full); background:var(--border); overflow:hidden; }
 .skill-bar__fill{ height:100%; width:0%; border-radius:var(--radius-full); background:var(--text); transition:width 1.1s var(--ease); }
 
-.stats-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:64px; text-align:center; }
+.stats-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:64px; text-align:center; }
 .stat-num{ font-family:var(--font-display); font-size:clamp(2.2rem,4.5vw,2.9rem); font-weight:800; letter-spacing:-.02em; color:var(--accent);}
 .stat-label{ margin-top:8px; font-size:.92rem; color:var(--text-secondary); }
 .stats-foot{ text-align:center; margin-top:20px; font-size:.82rem; color:var(--text-tertiary); font-style:italic; }
 
 @media (max-width:900px){ .skills__grid{ grid-template-columns:1fr 1fr; } }
 @media (max-width:640px){ .skills__grid{ grid-template-columns:1fr; } .stats-row{ grid-template-columns:1fr; gap:32px; } }
+@media (max-width:760px){ .stats-row{ grid-template-columns:1fr 1fr; gap:32px 20px; } }
+@media (max-width:480px){ .stats-row{ grid-template-columns:1fr; gap:32px; } }
 
 /* ============================================================
    PROJECTS
@@ -343,11 +345,7 @@ button{ font-family:inherit; cursor:pointer; }
 @media (max-width:640px){
   .contact__email{ flex-direction:column; padding:22px; }
 }
-/* Hide GitHub social icons */
-.hero__social a[aria-label="GitHub"],
-.contact__links a[aria-label="GitHub"] {
-  display: none;
-}
+
 </style>
 </head>
 <body>
@@ -358,7 +356,7 @@ button{ font-family:inherit; cursor:pointer; }
 <nav class="nav">
   <div class="container">
     <a href="#" class="nav__logo">HK</a>
-    <div class="nav__links" id="navLinks">
+    <div class="nav__links" id=s"navLinks">
       <a href="#about" class="nav-link">About</a>
       <a href="#skills" class="nav-link">Skills</a>
       <a href="#projects" class="nav-link">Projects</a>
@@ -367,7 +365,7 @@ button{ font-family:inherit; cursor:pointer; }
     </div>
     <div class="nav__right">
       <!-- EDIT: point this at your actual resume PDF -->
-      <a class="btn btn--secondary btn--sm" href="[CV] Hanna Kim.pdf" download>
+      <a class="btn btn--secondary btn--sm" href="Hanna-Kim-CV.pdf" download>
         <i class="fa-solid fa-download"></i><span>Resume</span>
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -382,7 +380,7 @@ button{ font-family:inherit; cursor:pointer; }
   <a href="#projects" class="nav-link">Projects</a>
   <a href="#experience" class="nav-link">Experience</a>
   <a href="#contact" class="nav-link">Contact</a>
-  <a class="btn btn--primary btn--full" href="[CV] Hanna Kim.pdf" download>
+  <a class="btn btn--primary btn--full" href="Hanna-Kim-CV.pdf" download>
     <i class="fa-solid fa-download"></i><span>Download Resume</span>
   </a>
 </div>
@@ -401,11 +399,10 @@ button{ font-family:inherit; cursor:pointer; }
     <div class="hero__ctas">
       <a href="#projects" class="btn btn--primary">View My Work</a>
       <!-- EDIT: point this at your actual resume PDF -->
-      <a href="[CV] Hanna Kim.pdf" download class="btn btn--secondary">Download Resume</a>
+      <a href="Hanna-Kim-CV.pdf" download class="btn btn--secondary">Download Resume</a>
     </div>
     <div class="hero__social">
       <!-- EDIT: replace with your real profile URLs -->
-      <a class="social-icon" href="https://github.com/hazzy9/Project-Nexus.git" aria-label="GitHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
       <a class="social-icon" href="https://www.linkedin.com/in/hannakim7/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
       <a class="social-icon" href="mailto:hannawalton9@yonsei.ac.kr" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
     </div>
@@ -530,8 +527,7 @@ button{ font-family:inherit; cursor:pointer; }
     </div>
     <div class="contact__links reveal">
       <!-- EDIT: replace with your real profile URLs -->
-      <a class="social-icon" href="https://github.com/yourusername" aria-label="GitHub" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
-      <a class="social-icon" href="https://linkedin.com/in/yourusername" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a class="social-icon" href="https://linkedin.com/in/hannakim7" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
       <a class="social-icon" href="mailto:hannawalton9@yonsei.ac.kr" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
     </div>
   </div>
@@ -567,6 +563,7 @@ const SKILL_DATA = [
 const STATS_DATA = [
   { value:2.5, decimals:1, suffix:"+", label:"Years of Experience" },
   { value:3, decimals:0, suffix:"", label:'Regulatory Approvals Attained<br><small><em>(Korean Ministry of Food and Drug Safety)</em></small>' },
+{ value:1, decimals:0, suffix:"", label:'Technical Certifications<br><small><em>(Telecommunications Technology Association)</em></small>' },
   { value:2, decimals:0, suffix:"", label:"Peer-Reviewed Publications*" },
 ];
 
