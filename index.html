@@ -259,20 +259,23 @@ button{ font-family:inherit; cursor:pointer; }
    ============================================================ */
 .experience{ background:var(--bg-alt); }
 .tabs{
-  position:relative; display:grid; grid-template-columns:1fr 1fr; max-width:520px; margin:0 auto 48px;
+  position:relative; display:grid; grid-template-columns:1fr 1fr 1fr; max-width:620px; margin:0 auto 48px;
   background:var(--pill-bg); border-radius:var(--radius-full); padding:5px;
 }
 .tabs__highlight{
-  position:absolute; top:5px; bottom:5px; left:5px; width:calc(50% - 5px);
+  position:absolute; top:5px; bottom:5px; left:5px; width:calc((100% - 10px) / 3);
   background:var(--bg); border-radius:var(--radius-full); box-shadow:var(--card-shadow);
   transition:transform .35s var(--ease);
 }
 .tab-btn{
-  position:relative; z-index:1; background:none; border:none; padding:13px 10px; border-radius:var(--radius-full);
+  position:relative; z-index:1; background:none; border:none; padding:13px 8px; border-radius:var(--radius-full);
   font-family:var(--font-body); font-weight:600; font-size:.94rem; color:var(--text-secondary);
-  display:flex; align-items:center; justify-content:center; gap:9px; transition:color .25s;
+  display:flex; align-items:center; justify-content:center; gap:8px; transition:color .25s;
 }
 .tab-btn.active{ color:var(--text); }
+@media (max-width:520px){
+  .tab-btn{ font-size:.82rem; gap:6px; padding:12px 4px; }
+}
 
 .timeline-panel{ display:none; flex-direction:column; gap:20px; }
 .timeline-panel.active{ display:flex; }
@@ -478,10 +481,13 @@ button{ font-family:inherit; cursor:pointer; }
       <div class="tabs__highlight" id="tabsHighlight"></div>
       <button class="tab-btn active" data-tab="experience" id="tabExperience"><i class="fa-solid fa-building"></i> Experience</button>
       <button class="tab-btn" data-tab="education" id="tabEducation"><i class="fa-solid fa-graduation-cap"></i> Education</button>
+      <button class="tab-btn" data-tab="leadership" id="tabLeadership"><i class="fa-solid fa-users"></i> Leadership</button>
+
     </div>
 
     <div class="timeline-panel active" id="panelExperience"></div>
     <div class="timeline-panel" id="panelEducation"></div>
+    <div class="timeline-panel" id="panelLeadership"></div>
   </div>
 </section>
 
@@ -592,10 +598,11 @@ const PROJECTS_DATA = [
 ];
 
 
+
 const EXPERIENCE_DATA = [
   {
     role:"ML Researcher &amp; Biostatistician", org:"HAII Corp",
-    dates:"Jul 2023 – Nov 2025", location:"Seoul, South Korea",
+    dates:"Jul 2023 – Nov 2025  .  2 yrs 5 mos", location:"Seoul, South Korea",
     desc:"Held two concurrent roles: led all MFDS regulatory submissions (including one of the field's earliest SaMD approvals) and the company's first FDA application as sole biostatistician, while independently building a smartphone-based glucose-prediction model in PyTorch.",
     achievements:[
       "Owned end-to-end statistical strategy for MFDS and FDA regulatory submissions",
@@ -606,7 +613,7 @@ const EXPERIENCE_DATA = [
   },
   {
     role:"Research Assistant", org:"GGGI — Global Green Growth Institute",
-    dates:"Feb 2021 – Aug 2021", location:"Seoul, South Korea",
+    dates:"Feb 2021 – Aug 2021  .  6mos", location:"Seoul, South Korea",
     desc:"Drove the core employment-forecasting model for a GGGI Technical Report assessing green-jobs potential from renewable energy and forestry investments, working under the project's principal economist.",
     achievements:[
       "Modeled outcomes across 5 renewable energy technology categories",
@@ -616,7 +623,7 @@ const EXPERIENCE_DATA = [
   },
   {
     role:"Sales &amp; Translation", org:"Korn Ferry",
-    dates:"Jan 2023 - Apr 2023", location:"Seoul, South Korea",
+    dates:"Jan 2023 - Apr 2023 . 3 mos", location:"Seoul, South Korea",
     desc:"Supported sales operations and provided translation services, developing early client-facing and cross-cultural communication skills that still shape how I present technical work today.",
     achievements:[
       "Supported client-facing sales workflows in a fast-paced, relationship-driven environment",
@@ -647,6 +654,42 @@ const EDUCATION_DATA = [
     ]
   },
 ];
+
+const LEADERSHIP_DATA = [
+  {
+    role:"Organizing Committee Member (Volunteer)", org:"TCK Camp Organizing Committee",
+    dates:"Jun 2025 – Jul 2026 . 1 yr 1 mos", location:"Seoul, South Korea",
+    desc:"Served on a 7-person committee that planned and executed a 4-night, 5-day camp for 90+ Third Culture Kids navigating life across cultures — from concept through on-site delivery.",
+    achievements:[
+      "Designed and analyzed a participant needs-assessment survey, using the findings to directly shape program content and structure",
+      "Standardized committee operational workflows — cutting weekly meeting time by 40% and improving record-keeping — sustained across a full year of planning",
+      "Coordinated a team of 12 on-site volunteer staff during the 5-day event, ensuring smooth daily operations across sessions and activities"
+    ],
+    tags:["Program Design","Needs Assessment","Operations","Staff Coordination"]
+  },
+  {
+    role:"Chief Residential Assistant · Residential Assistant", org:"Yonsei University, Residential College",
+    dates:"Feb 2018 – Dec 2019 . 1 y 11 mos", location:"Incheon, South Korea",
+    desc:"Chief Residential Assistant (Jul 2019 - Dec 2019) | Residential Assistant (Feb 2018 - Jun 2019)<br>Oversaw dormitory affairs for a 300+ resident international dormitory alongside the supervising faculty.",
+    achievements:[
+      "Managed a 10M KRW annual budget across 20+ academic and social events per semester — the highest engagement rate in dormitory history",
+      "Led a team of 12 RAs (6 international, 6 Korean) and personally supported 25–30 international freshmen each semester"
+    ],
+    tags:["Budget Management","Team Leadership","Cross-Cultural", "Project Management"]
+  },
+  {
+    role:"Vice President", org:"Social Innovation Creators' Academia (SICA)",
+    dates:"Aug 2020 – Jul 2021 . 1 yr", location:"Seoul, South Korea",
+    desc:"Coached members of a startup-focused student club on early-stage business fundamentals.",
+    achievements:[
+      "Coached 30+ club members on business model design, market-size estimation, and marketing strategy, building original teaching materials",
+      "Organized alumni mentorship sessions with speakers working across a range of fields"
+    ],
+    tags:["Coaching","Business Strategy","Mentorship"]
+  },
+];
+
+
 
 /* ============================================================
    INLINE SVG ART — one per project card
@@ -775,6 +818,7 @@ renderStats();
 renderProjects();
 renderTimeline(EXPERIENCE_DATA, "panelExperience");
 renderTimeline(EDUCATION_DATA, "panelEducation");
+renderTimeline(LEADERSHIP_DATA, "panelLeadership");
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* ============================================================
@@ -873,21 +917,28 @@ if(skillsSection){
 }
 
 // experience / education tabs
+/* AFTER */
 const tabExperience = document.getElementById("tabExperience");
 const tabEducation = document.getElementById("tabEducation");
+const tabLeadership = document.getElementById("tabLeadership");
 const panelExperience = document.getElementById("panelExperience");
 const panelEducation = document.getElementById("panelEducation");
+const panelLeadership = document.getElementById("panelLeadership");
 const tabsHighlight = document.getElementById("tabsHighlight");
+const TAB_ORDER = ["experience","education","leadership"];
 function setTab(which){
-  const expActive = which === "experience";
-  tabExperience.classList.toggle("active", expActive);
-  tabEducation.classList.toggle("active", !expActive);
-  panelExperience.classList.toggle("active", expActive);
-  panelEducation.classList.toggle("active", !expActive);
-  tabsHighlight.style.transform = expActive ? "translateX(0)" : "translateX(100%)";
+  tabExperience.classList.toggle("active", which === "experience");
+  tabEducation.classList.toggle("active", which === "education");
+  tabLeadership.classList.toggle("active", which === "leadership");
+  panelExperience.classList.toggle("active", which === "experience");
+  panelEducation.classList.toggle("active", which === "education");
+  panelLeadership.classList.toggle("active", which === "leadership");
+  const idx = TAB_ORDER.indexOf(which);
+  tabsHighlight.style.transform = `translateX(${idx * 100}%)`;
 }
 tabExperience.addEventListener("click", () => setTab("experience"));
 tabEducation.addEventListener("click", () => setTab("education"));
+tabLeadership.addEventListener("click", () => setTab("leadership"));
 
 // copy email
 const copyBtn = document.getElementById("copyEmailBtn");
@@ -897,7 +948,6 @@ copyBtn.addEventListener("click", async () => {
   try{
     await navigator.clipboard.writeText(emailText.textContent.trim());
   } catch(e){
-    /* clipboard API unavailable — fail silently, email is still visible/selectable */
   }
   copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
   setTimeout(() => { copyBtn.innerHTML = original; }, 1600);
