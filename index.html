@@ -6,27 +6,7 @@
 <title>Hanna Kim — Data Scientist Portfolio</title>
 <meta name="description" content="Hanna — Data Scientist applying machine learning and AI to create solutions.">
 
-<!--
-  ============================================================
-  HOW TO EDIT THIS FILE
-  ============================================================
-  This is a single, self-contained HTML file — open it in any code
-  editor (VS Code, or a free online one like https://stackblitz.com
-  or https://codepen.io by pasting the contents) or just double-click
-  it to preview in a browser.
 
-  Search for "EDIT:" (Ctrl+F / Cmd+F) to find every spot that needs
-  your real information — contact details, links, dates, and a few
-  metrics I flagged rather than guessed at.
-
-  Structure:
-    1. <style>   — all CSS, organized by section, near the top
-    2. <body>    — markup for each section, top to bottom
-    3. <script>  — page data (projects/experience/education) + interactions,
-                   at the very bottom. Editing the DATA objects there is
-                   often the fastest way to update content.
-  ============================================================
--->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,7 +81,7 @@ button{ font-family:inherit; cursor:pointer; }
 .section-head p{ margin-top:16px; font-size:1.05rem; color:var(--text-secondary); line-height:1.65; }
 @media (max-width:640px){ .section-head{ margin-bottom:44px; } }
 
-/* buttons */
+
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:9px;
   padding:14px 26px; border-radius:var(--radius-full);
@@ -124,7 +104,7 @@ button{ font-family:inherit; cursor:pointer; }
   background:var(--pill-bg); color:var(--pill-text); font-size:.82rem; font-weight:500;
 }
 
-/* reveal-on-scroll */
+
 .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in-view{ opacity:1; transform:translateY(0); }
 .reveal-stagger > *{ opacity:0; transform:translateY(18px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
@@ -134,9 +114,7 @@ button{ font-family:inherit; cursor:pointer; }
 .reveal-stagger.in-view > *:nth-child(3){ transition-delay:.17s; }
 .reveal-stagger.in-view > *:nth-child(4){ transition-delay:.24s; }
 
-/* ============================================================
-   NAV
-   ============================================================ */
+
 .nav{
   position:sticky; top:0; z-index:100; background:rgba(255,255,255,.86);
   backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
@@ -350,9 +328,7 @@ button{ font-family:inherit; cursor:pointer; }
 </head>
 <body>
 
-<!-- ============================================================
-     NAV
-     ============================================================ -->
+
 <nav class="nav">
   <div class="container">
     <a href="#" class="nav__logo">HK</a>
@@ -364,7 +340,7 @@ button{ font-family:inherit; cursor:pointer; }
       <a href="#contact" class="nav-link">Contact</a>
     </div>
     <div class="nav__right">
-      <!-- EDIT: point this at your actual resume PDF -->
+
       <a class="btn btn--secondary btn--sm" href="Hanna-Kim-CV.pdf" download>
         <i class="fa-solid fa-download"></i><span>Resume</span>
       </a>
@@ -544,12 +520,7 @@ button{ font-family:inherit; cursor:pointer; }
 (function(){
 "use strict";
 
-/* ============================================================
-   CONTENT DATA
-   Edit the values below — everything on the page (skills, stats,
-   projects, experience, education) is rendered from here.
-   Look for "EDIT:" comments marking things I couldn't know for you.
-   ============================================================ */
+
 
 const SKILL_DATA = [
   { title:"Programming Languages", skills:[["Python",90],["SQL", 85],["R",85]] },
@@ -557,8 +528,7 @@ const SKILL_DATA = [
  { title:"Data & Cloud Infrastructure", skills:[["Docker",78],["AWS (ECS)",75],["Git / CI-CD",80],["PostgreSQL",75]] },
  { title:"Biostatistics & Regulatory", skills:[["Statistical Analysis Strategy",90],["Clinical Trial Design",85],["MFDS/FDA Submissions",80]] },
 ];
-// EDIT: these percentages are self-rated proficiency (a common convention on
-// portfolio sites), not a benchmarked score — raise, lower, or relabel freely.
+
 
 const STATS_DATA = [
   { value:2.5, decimals:1, suffix:"+", label:"Years of Experience" },
@@ -578,7 +548,7 @@ const PROJECTS_DATA = [
       "Findings statistically validated via cluster-based permutation testing with family-wise error correction",
       "Publication currently under peer-review for a nature-family journal"
     ],
-    // EDIT: link to the actual DOI / journal page
+
     footer:{ type:"confidential", label:"Confidential — details available after publication" }
   },
   {
@@ -603,7 +573,7 @@ const PROJECTS_DATA = [
         "27 Countries covered",
       "Second-author credit on the resulting institutional publication",
     ],
-    // EDIT: link to the actual publication
+
     footer:{ type:"link", label:"View Publication", icon:"fa-arrow-up-right-from-square", href:"https://gggi.org/wp-content/uploads/2021/09/WEB_GGGI-Technical-Report-No-19-Green-Jobs_FINAL_v02.pdf" }
   },
   {
@@ -616,12 +586,12 @@ const PROJECTS_DATA = [
       "Automated CI/CD deploy pipeline",
       "Production deployment on AWS ECS"
     ],
-    // EDIT: link to the real repo (or remove this footer block if it's private)
+
     footer:{ type:"#", label:"In Progress", icon:"fa-code", href:"#" }
   },
 ];
 
-// EDIT: replace "[Add years]" with real date ranges throughout
+
 const EXPERIENCE_DATA = [
   {
     role:"ML Researcher &amp; Biostatistician", org:"HAII Corp",
@@ -679,7 +649,7 @@ const EDUCATION_DATA = [
 ];
 
 /* ============================================================
-   INLINE SVG ART — one per project card, no stock photos
+   INLINE SVG ART — one per project card
    ============================================================ */
 const ART = {
   waveform: () => `
@@ -827,7 +797,7 @@ navToggle.addEventListener("click", () => {
 });
 navMobile.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
 
-// active nav link on scroll
+
 const sections = ["about","skills","projects","experience","contact"].map(id => document.getElementById(id)).filter(Boolean);
 const navLinkEls = document.querySelectorAll('.nav-link');
 if("IntersectionObserver" in window && sections.length){
@@ -842,7 +812,7 @@ if("IntersectionObserver" in window && sections.length){
   sections.forEach(s => navObserver.observe(s));
 }
 
-// reveal on scroll
+
 const revealEls = document.querySelectorAll(".reveal, .reveal-stagger");
 if(reduceMotion || !("IntersectionObserver" in window)){
   revealEls.forEach(el => el.classList.add("in-view"));
