@@ -285,11 +285,17 @@ button{ font-family:inherit; cursor:pointer; }
 .tl-card__org{ font-size:.98rem; color:var(--text-secondary); margin-top:3px; }
 .tl-card__meta{ text-align:right; font-size:.86rem; color:var(--text-tertiary); line-height:1.6; white-space:nowrap; }
 .tl-card p.tl-desc{ color:var(--text-secondary); font-size:.95rem; line-height:1.7; margin-bottom:16px; }
+.tl-card__subroles{ display:flex; flex-direction:column; gap:5px; margin:10px 0 16px; }
+.tl-card__subrole-row{ display:flex; align-items:baseline; gap:8px; font-size:.87rem; }
+.tl-card__subrole-row .tick{ color:var(--accent); font-size:.45rem; }
+.tl-card__subrole-row .role{ font-weight:600; color:var(--text-secondary); }
+.tl-card__subrole-row .date{ color:var(--text-tertiary); font-size:.82rem; }
 .tl-card__achv-label{ font-size:.86rem; font-weight:700; margin-bottom:8px; }
 .tl-card ul.tl-achv{ margin-bottom:18px; }
 .tl-card ul.tl-achv li{ position:relative; padding-left:18px; font-size:.9rem; color:var(--text-secondary); line-height:1.65; }
 .tl-card ul.tl-achv li::before{ content:""; position:absolute; left:0; top:9px; width:5px; height:5px; border-radius:50%; background:var(--text-tertiary); }
 .tl-card__tags{ display:flex; flex-wrap:wrap; gap:8px; }
+ 
 
 @media (max-width:640px){
   .tl-card__top{ flex-direction:column; }
@@ -668,14 +674,30 @@ const LEADERSHIP_DATA = [
     tags:["Program Design","Needs Assessment","Operations","Staff Coordination"]
   },
   {
-    role:"Chief Residential Assistant · Residential Assistant", org:"Yonsei University, Residential College",
-    dates:"Feb 2018 – Dec 2019 . 1 y 11 mos", location:"Incheon, South Korea",
-    desc:"Chief Residential Assistant (Jul 2019 - Dec 2019) | Residential Assistant (Feb 2018 - Jun 2019)<br>Oversaw dormitory affairs for a 300+ resident international dormitory alongside the supervising faculty.",
-    achievements:[
-      "Managed a 10M KRW annual budget across 20+ academic and social events per semester — the highest engagement rate in dormitory history",
-      "Led a team of 12 RAs (6 international, 6 Korean) and personally supported 25–30 international freshmen each semester"
+    role:"Residential Assistant", org:"Yonsei University, Residential College",
+    dates:"Feb 2018 – Dec 2019 · 1 yr 11 mos", location:"Incheon, South Korea",
+    desc:"Supported residential life for a 300+ resident international dormitory across four semesters as a Residential Assistant, then Chief Residential Assistant — running English-language programming with a bilingual team of Korean and international RAs.",
+    achievements:[],
+    achievementGroups:[
+      {
+        label:"Chief Residential Assistant",
+        items:[
+          "Owned full program planning and a 10M KRW annual dormitory budget, personally leading the semester's full slate of 20+ events",
+          "Directed and supported the 12-person RA team (6 Korean, 6 international) while continuing hands-on residential duties",
+          "Served as the primary liaison to Yonsei's Residential Office for administrative and policy matters",
+          "Served as the point of escalation for dormitory emergencies and individual student counseling needs"
+        ]
+      },
+      {
+        label:"Residential Assistant",
+        items:[
+          "Contributed to the ideation, planning, and post-event feedback behind 20+ academic and social events per semester, ranging from 20 to 150–200 attendees",
+          "Lived in the dorm alongside first-year students, serving as their day-to-day point of contact and support — 25–30 students each semester",
+          "Helped oversee general residential affairs and community wellbeing on the floor"
+        ]
+      }
     ],
-    tags:["Budget Management","Team Leadership","Cross-Cultural", "Project Management"]
+    tags:["Budget Management","Team Leadership","Cross-Cultural","Project Management"]
   },
   {
     role:"Vice President", org:"Social Innovation Creators' Academia (SICA)",
@@ -791,6 +813,7 @@ function renderProjects(){
   }).join("");
 }
 
+
 function renderTimeline(data, elId){
   document.getElementById(elId).innerHTML = data.map(item => `
     <div class="tl-card">
@@ -801,10 +824,17 @@ function renderTimeline(data, elId){
         </div>
         <div class="tl-card__meta">${item.dates}<br>${item.location}</div>
       </div>
+      ${item.subRoles && item.subRoles.length ? `
+        <div class="tl-card__subroles">${item.subRoles.map(r => `
+          <div class="tl-card__subrole-row"><span class="tick">&#9679;</span><span class="role">${r.title}</span><span class="date">${r.dates}</span></div>
+        `).join("")}</div>` : ""}
       <p class="tl-desc">${item.desc}</p>
-      ${item.achievements.length ? `
+      ${item.achievementGroups && item.achievementGroups.length ? item.achievementGroups.map((g, i) => `
+        <div class="tl-card__achv-label" style="margin-top:${i > 0 ? '18px' : '0'};">${g.label}</div>
+        <ul class="tl-achv">${g.items.map(a => `<li>${a}</li>`).join("")}</ul>
+      `).join("") : (item.achievements.length ? `
         <div class="tl-card__achv-label">Key Achievements</div>
-        <ul class="tl-achv">${item.achievements.map(a => `<li>${a}</li>`).join("")}</ul>` : ""}
+        <ul class="tl-achv">${item.achievements.map(a => `<li>${a}</li>`).join("")}</ul>` : "")}
       ${item.courseGroups && item.courseGroups.length ? item.courseGroups.map(g => `
         <div class="tl-card__achv-label" style="margin-top:${item.achievements.length ? '18px' : '0'};">${g.label}</div>
         <div class="tl-card__tags" style="margin-bottom:14px;">${g.courses.map(c => `<span class="pill">${c}</span>`).join("")}</div>
