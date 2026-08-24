@@ -606,16 +606,36 @@ const PROJECTS_DATA = [
 
 
 const EXPERIENCE_DATA = [
-  {
-    role:"Applied AI Data Scientist &amp; Biostatistician", org:"HAII Corp",
-    dates:"Jul 2023 – Nov 2025  .  2 yrs 5 mos", location:"Seoul, South Korea",
-    desc:"Held two concurrent roles: led all MFDS regulatory submissions (including one of the field's earliest SaMD approvals) and the company's first FDA application as sole biostatistician, while independently building a smartphone-based glucose-prediction model in PyTorch.",
-    achievements:[
-      "Owned end-to-end statistical strategy for MFDS and FDA regulatory submissions",
-      "Built and validated a PyTorch CNN for non-invasive glucose prediction, contributing to a third-author JMIR publication",
-      "Operated as the company's only biostatistician across two concurrent, high-stakes workstreams"
+{
+    role:"Applied AI Data Scientist &amp Biostatistician", org:"HAII Corp",
+    dates:"Jul 2023 – Nov 2025 · 2 yrs 5 mos", location:"Seoul, South Korea",
+    // subRoles:[
+    //   { title:"Applied AI Data Scientist", dates:"Oct 2023 – Nov 2025" },
+    //   { title:"Biostatistician", dates:"Jul 2023 – Jun 2024" }
+    // ],
+    desc:"" ,
+    // Held two roles concurrently — Applied AI Data Scientist and Biostatistician.",
+    // achievements:[],
+    achievementGroups:[
+      {
+        label:"Applied AI Data Scientist",
+        items:[
+          "Built and validated a PyTorch CNN predicting blood glucose from smartphone rPPG video, reaching 8.40% MARD and 92.7% Clarke Zone A accuracy (100% within Zones A+B) — which surpasses performances of exisiting PPG solutions in prior literatures.",
+          "Diagnosed low-quality vendor data as the root cause of early model underperformance; pushed for raw, unprocessed signal instead, enhancing model performance by over 2x, and drove the resulting vendor transition that cut costs by >50% and improved data quality.",
+          "Applied SHAP and Class Activation Maps for model explainability and PCA/clustering for feature engineering.",
+          "Documented the methodology and results of the model as first author, under the guidance of the adivising professor — currently under peer review for a Nature-family journal."
+        ]
+      },
+      {
+        label:"Biostatistician",
+        items:[
+          "Owned statistical analysis and regulatory documentation across the full product lifecycle — from clinical trial design through market approval — as the sole biostatistician on a 7-person team",
+          "Led the statistical case behind 4 MFDS submissions, all approved, including the company's first Medical Device Approval — confirm exact count/structure",
+          "Provided all the statistical validation and analysis underpinning the team's JMIR publication as third author and the main statistician, working under expert methodological guidance"
+        ]
+      }
     ],
-    tags:["PyTorch","Biostatistics","MFDS","FDA","Regulatory Affairs"]
+    tags:["Python","R","Pytorch","Deep Learning","Biostatistics","Clinical Trial Design","MFDS","Regulatory Affairs"]
   },
   {
     role:"Research Assistant", org:"GGGI — Global Green Growth Institute",
@@ -663,7 +683,7 @@ const EDUCATION_DATA = [
 
 const LEADERSHIP_DATA = [
   {
-    role:"Organizing Committee Member (Volunteer)", org:"TCK Camp Organizing Committee",
+    role:"Organizing Committee Member", org:"TCK Camp Organizing Committee (Volunteer)",
     dates:"Jun 2025 – Jul 2026 . 1 yr 1 mos", location:"Seoul, South Korea",
     desc:"Served on a 7-person committee that planned and executed a 4-night, 5-day camp for 90+ Third Culture Kids navigating life across cultures — from concept through on-site delivery.",
     achievements:[
