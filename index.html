@@ -208,7 +208,7 @@ button{ font-family:inherit; cursor:pointer; }
    SKILLS
    ============================================================ */
 .skills{ background:var(--bg-alt); }
-.skills__grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.skills__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .skill-card{ background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-m); padding:26px 24px; }
 .skill-card h3{ font-size:1.02rem; font-weight:700; margin-bottom:22px; }
 .skill-row + .skill-row{ margin-top:18px; }
@@ -407,14 +407,13 @@ button{ font-family:inherit; cursor:pointer; }
     <div class="about__grid">
       <div class="about__text reveal">
         <p>I'm an Applied AI Data Scientist with experience spanning machine learning, statistics, and real-world data. At HAII Corp, I built a smartphone-based, non-invasive glucose-prediction model using PyTorch CNNs while also serving as the company's sole biostatistician, leading statistical analyses and regulatory submissions to Korea's MFDS and the company's first FDA application. I hold a degree in Applied Statistics from Yonsei University, complemented by graduate coursework in AI (Ewha Womans University, College of Artificial Intelligence).</p>
-        <p>I'm naturally drawn to unfamiliar problems and enjoy learning whatever I need to understand them. Outside of work, I build things end-to-end — including Nexus, a relationship-memory product with a PostgreSQL backend, Docker, CI/CD, and AWS ECS. I'm particularly interested in technology and AI products, where I can combine rigorous analysis, experimentation, and solution building to turn ambiguous problems into useful insights.</p> 
+        <p>I'm naturally drawn to unfamiliar problems and enjoy learning whatever I need to understand them. Much of my work happened between the data and the people relying on it — negotiating methods with regulators, partnering with a Massachusetts General Hospital team, and turning model results into decisions for executives and investors, in Korean and English. </p>
+        <p>Outside of work, I build tools for real users. One is an English Speaking Enhancing platform — now in active use to help people improve their business English skills. The other is Nexus, a relationship-memory app I'm building to learn full-stack development, aimed to improve the quality of human relationships. I'm particularly interested in technology and AI products, where I can combine rigorous analysis, experimentation, and solution building to turn ambiguous problems into useful insights.</p> 
         <div class="about__pills">
           <span class="pill">Python</span>
           <span class="pill">PyTorch</span>
           <span class="pill">R</span>
           <span class="pill">SQL</span>
-          <span class="pill">Docker</span>
-          <span class="pill">AWS</span>
         </div>
       </div>
       <div class="about__cards reveal">
@@ -436,7 +435,7 @@ button{ font-family:inherit; cursor:pointer; }
           <div class="info-card__icon"><i class="fa-solid fa-layer-group"></i></div>
           <div>
             <h3>Product &amp; Systems Building</h3>
-            <p>Turning ideas into working products — from backend architecture and data pipelines to Docker, CI/CD, and AWS deployment.</p>
+            <p>Turning ideas into working products — from investigating user needs and designing data flows to building and shipping working AI tools.</p>
           </div>
         </div>
       </div>
@@ -537,16 +536,15 @@ button{ font-family:inherit; cursor:pointer; }
 const SKILL_DATA = [
   { title:"Programming Languages", skills:[["Python",90],["SQL", 85],["R",85]] },
   { title:"Machine Learning & Modeling", skills:[["PyTorch",85],["Scikit-learn",80],["Deep Learning",80]] },
- { title:"Data & Cloud Infrastructure", skills:[["Docker",78],["AWS (ECS)",75],["Git / CI-CD",80],["PostgreSQL",75]] },
- { title:"Biostatistics & Regulatory", skills:[["Statistical Analysis Strategy",90],["Clinical Trial Design",85],["MFDS/FDA Submissions",80]] },
+  { title:"Biostatistics & Regulatory", skills:[["Statistical Analysis Strategy",90],["Clinical Trial Design",85],["MFDS/FDA Submissions",80]] },
 ];
 
 
 const STATS_DATA = [
   { value:2.5, decimals:1, suffix:"+", label:"Years of Experience" },
-  { value:3, decimals:0, suffix:"", label:'Regulatory Approvals Attained<br><small><em>(Korean Ministry of Food and Drug Safety)</em></small>' },
+  { value:4, decimals:0, suffix:"", label:'Regulatory Approvals Attained<br><small><em>(Korean Ministry of Food and Drug Safety)</em></small>' },
 { value:1, decimals:0, suffix:"", label:'Technical Certifications<br><small><em>(Telecommunications Technology Association)</em></small>' },
-  { value:2, decimals:0, suffix:"", label:"Peer-Reviewed Publications*" },
+  { value:1, decimals:0, suffix:"", label:"Peer-Reviewed Publications*" },
 ];
 
 const PROJECTS_DATA = [
@@ -569,7 +567,7 @@ const PROJECTS_DATA = [
     desc:"Served as HAII Corp's sole biostatistician, owning the statistical strategy behind the company's four Korea's MFDS submissions and its first-ever FDA application.",
     tags:["Statistical Strategy","Biostatistics","Clinical Data"],
     stats:[
-      "4 MFDS submissions led; <br>1st MFDS Medical Device Approval — Enabling Commercialization",
+      "4 MFDS submissions led; <br>(Includes the company's 1st MFDS Medical Device Approval, which enabled commercialization",
       "Peer-reviewed publication in JMIR",
       "1st FDA application filed by the company",
     ],
@@ -579,7 +577,7 @@ const PROJECTS_DATA = [
     image:"gggi_image2.png",
     title:"Forecasting Employment from Green Investment",
     desc:"Contributed to GGGI's modeling and analysis of employment impacts from green economic transitions — quantifying jobs created or displaced to inform national policymakers. Resulted in a second-author publication.",
-    tags:["Employement Modeling,", "Excel/VBA","Primary-Source Research"],
+    tags:["Employment Modeling,", "Excel/VBA","Primary-Source Research"],
     stats:[
         "Modeled outcomes across 5 renewable energy technology categories",
         "27 Countries covered",
@@ -589,14 +587,26 @@ const PROJECTS_DATA = [
     footer:{ type:"link", label:"View Publication", icon:"fa-arrow-up-right-from-square", href:"https://gggi.org/wp-content/uploads/2021/09/WEB_GGGI-Technical-Report-No-19-Green-Jobs_FINAL_v02.pdf" }
   },
   {
+    art:"voice",
+    title:"English Speaking Enhancing Platform",
+    desc:"An AI-powered platform for practicing business English speaking: learners record answers to open-ended questions, get instant AI transcription and feedback, and receive a teacher's review on top — so practice between lessons leaves a record to build on.",
+    tags:["AI-powered Feedback","Speech-to-Text","Cloudflare","Workers AI"],
+    stats:[
+      "In active use — designed to optimize both learners' practice and teachers' teaching experience.",
+      "Two views: a learner English speaking practice page and a password-protected teacher console",
+      "Cloudflare Pages + Functions, D1 (SQLite), Workers AI (Whisper, Llama 3.1 — experiments with more recent models)"
+    ],
+    footer:{ type:"confidential", label:"Private — demo available on request" }
+  },
+  {
     image:"nexus_image.png",
     title:"Nexus — Relationship-Memory App",
     desc:"Designed and built a solo, full-stack mobile app for tracking relationship context and history — PostgreSQL backend, containerized with Docker, deployed to AWS ECS with GitHub Actions CI/CD.",
-    tags:["PostgreSQL","Docker","AWS ECS","CI/CD"],
+    tags:["PostgreSQL","Docker"],
     stats:[
       "Solo-built, full-stack, end to end",
-      "Automated CI/CD deploy pipeline",
-      "Production deployment on AWS ECS"
+      "React/FastAPI/PostgreSQL",
+      "In progress"
     ],
 
     footer:{ type:"#", label:"In Progress", icon:"fa-code", href:"#" }
@@ -620,7 +630,7 @@ const EXPERIENCE_DATA = [
       {
         label:"Applied AI Data Scientist",
         items:[
-          "Built and validated a PyTorch CNN predicting blood glucose from smartphone rPPG video, reaching 8.40% MARD and 92.7% Clarke Zone A accuracy (100% within Zones A+B) — which surpasses performances of exisiting PPG solutions in prior literatures.",
+          "Built and validated a PyTorch CNN predicting blood glucose from smartphone rPPG video, reaching 8.40% MARD and 92.7% Clarke Zone A accuracy (100% within Zones A+B) — which surpasses performances of existing PPG solutions in prior literatures.",
           "Diagnosed low-quality vendor data as the root cause of early model underperformance; pushed for raw, unprocessed signal instead, enhancing model performance by over 2x, and drove the resulting vendor transition that cut costs by >50% and improved data quality.",
           "Applied SHAP and Class Activation Maps for model explainability and PCA/clustering for feature engineering.",
           "Documented the methodology and results of the model as first author, under the guidance of the advising professor — currently under peer review for a Nature-family journal."
@@ -648,7 +658,7 @@ const EXPERIENCE_DATA = [
     tags:["Employement Modeling,", "Excel/VBA","Primary-Source Research"]
   },
   {
-    role:"Research Assitant (Sales &amp; Translation)", org:"Korn Ferry",
+    role:"Research Assistant (Sales &amp; Translation)", org:"Korn Ferry",
     dates:"Jan 2023 - Apr 2023 . 3 mos", location:"Seoul, South Korea",
     desc:"Supported sales operations and provided translation services, developing early client-facing and cross-cultural communication skills that still shape how I present technical work today.",
     achievements:[
@@ -770,6 +780,27 @@ const ART = {
       <path d="M35,150 Q120,55 200,85 T365,45" fill="none" stroke="var(--text)" stroke-width="2.5"/>
       <path d="M55,120 Q125,38 200,60 T345,25" fill="none" stroke="var(--border)" stroke-width="2"/>
     </svg>`,
+  voice: () => `
+    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recorded answer becoming transcript and feedback">
+      <rect width="400" height="200" fill="var(--bg-alt)"/>
+      <rect x="40" y="62" width="34" height="58" rx="17" fill="var(--text)"/>
+      <path d="M30,104 a27,27 0 0 0 54,0" fill="none" stroke="var(--text)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="57" y1="131" x2="57" y2="146" stroke="var(--text)" stroke-width="3" stroke-linecap="round"/>
+      <g stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+        <line x1="108" y1="92" x2="108" y2="108"/><line x1="120" y1="78" x2="120" y2="122"/>
+        <line x1="132" y1="86" x2="132" y2="114"/><line x1="144" y1="70" x2="144" y2="130"/>
+        <line x1="156" y1="88" x2="156" y2="112"/><line x1="168" y1="80" x2="168" y2="120"/>
+        <line x1="180" y1="94" x2="180" y2="106"/>
+      </g>
+      <path d="M198,100 l16,0 m-6,-6 l6,6 l-6,6" fill="none" stroke="var(--text-tertiary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="230" y="46" width="134" height="48" rx="10" fill="var(--bg)" stroke="var(--border)" stroke-width="2"/>
+      <line x1="246" y1="64" x2="342" y2="64" stroke="var(--border)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="246" y1="78" x2="316" y2="78" stroke="var(--border)" stroke-width="4" stroke-linecap="round"/>
+      <rect x="230" y="108" width="134" height="48" rx="10" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="2"/>
+      <line x1="246" y1="126" x2="336" y2="126" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+      <line x1="246" y1="140" x2="300" y2="140" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+      <circle class="pulse-dot" cx="352" cy="152" r="4.5" fill="var(--accent)"/>
+    </svg>`,
   network: () => `
     <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="400" height="200" fill="var(--bg-alt)"/>
@@ -825,7 +856,7 @@ function renderProjects(){
       : `<span class="confidential-note"><i class="fa-solid fa-lock"></i> ${p.footer.label}</span>`;
     return `
       <article class="project-card">
-        <div class="project-card__art"><img src="${p.image}" alt="${p.title}" loading="lazy"></div>
+        <div class="project-card__art">${p.art ? ART[p.art]() : `<img src="${p.image}" alt="${p.title}" loading="lazy">`}</div>
         <div class="project-card__body">
           <div class="project-card__tags">${tagsHtml}</div>
           <h3>${p.title}</h3>
